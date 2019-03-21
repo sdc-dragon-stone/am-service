@@ -1,17 +1,41 @@
 {
-  "name": "",
+  "name": "mashbnb",
   "version": "",
-  "description": "",
-  "author": "",
-  "license": "",
+  "description": "HR RPT12 FEC-MASH Airbnb recreation project",
+  "author": "Vivek Patel",
+  "license": "MIT",
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
+    "express": "^4.16.4",
+    "jquery": "^3.3.1",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.19",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel": "^6.23.0",
+    "babel-jest": "^24.5.0",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.2.0",
+    "enzyme": "^3.9.0",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "jest": "^24.5.0",
+    "lorem-hipsum": "^0.1.7",
+    "mocha": "^6.0.2",
+    "path": "^0.12.7",
+    "random-date-generator": "^1.0.2",
+    "sillyname": "^0.1.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
   }
 }
