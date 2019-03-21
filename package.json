@@ -7,14 +7,20 @@
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "jest",
+    "react-dev": "webpack -d --watch",
+    "server-dev": "nodemon server/index.js",
+    "seed": "node database/seed.js"
+  },
   "dependencies": {
     "express": "^4.16.4",
     "jquery": "^3.3.1",
     "mongodb": "^3.1.13",
     "mongoose": "^5.4.19",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "react-star-ratings": "^2.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
