@@ -8,7 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "test": "jest",
+    "test-server": "mocha tests/testServer.js",
+    "test-db": "mocha tests/testDB.js",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
     "seed": "node database/seed.js"
@@ -18,7 +19,7 @@
     "jquery": "^3.3.1",
     "mongodb": "^3.1.13",
     "mongoose": "^5.4.19",
-    "react": "^16.8.4",
+    "react": "^16.8.5",
     "react-dom": "^16.8.4",
     "react-star-ratings": "^2.3.0"
   },
@@ -32,14 +33,18 @@
     "babel-loader": "^8.0.5",
     "babel-preset-env": "^1.7.0",
     "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "jest": "^24.5.0",
     "lorem-hipsum": "^0.1.7",
     "mocha": "^6.0.2",
+    "moment": "^2.24.0",
+    "node-random-name": "^1.0.1",
     "path": "^0.12.7",
     "random-date-generator": "^1.0.2",
-    "sillyname": "^0.1.0",
+    "random-int": "^1.0.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"

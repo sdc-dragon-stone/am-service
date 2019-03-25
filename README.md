@@ -16,8 +16,11 @@
 1. [Development](#development)
 
 ## Usage
-
-> Some usage instructions
+- install dependencies using: npm install
+- run webpack to create bundle.js using: npm run server-dev
+- start express server and serve up bundle.js to browser using: npm run server-dev
+- seed data into the mongodb database using: npm run seed
+- open index.html file in client/dist folder and go to http://localhost:3000/
 
 ## Requirements
 
