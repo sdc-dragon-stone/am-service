@@ -7,7 +7,6 @@ var genName = require('sillyname');
 var picUrl = 'https://i.kinja-img.com/gawker-media/image/upload/s--K-l8wGJH--/c_scale,f_auto,fl_progressive,q_80,w_800/jqncra5xcu3ajxoreokh.jpg';
 
 
-
 var genReviewText = () => {
   return loremHipsum({
     count: 3,
