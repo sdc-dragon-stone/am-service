@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Review = require('./db.js').Review;
-// test featuer branch
-// more stuff
+
 var loremHipsum = require('lorem-hipsum');
 var dateGen = require('random-date-generator');
 var genName = require('node-random-name');
