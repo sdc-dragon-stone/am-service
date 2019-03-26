@@ -3,25 +3,29 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
 import TotalReviews from './components/totalReviews.jsx';
-import ReviewCriteria from './components/ReviewCriteria.jsx';
-
-//test
-import StarRatings from 'react-star-ratings';
+import ReviewCriteria from './components/reviewCriteria.jsx';
+import IndivReviews from './components/indivReviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      reviews: []
+      reviews: [],
+      criteria: {}
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     $.ajax({
       url: '/totalReviews',
       method: 'GET',
-      success: (reviews) => { this.setState({reviews}); },
+      success: (reviewData) => {
+        this.setState({
+          reviews: reviewData.reviews,
+          criteria: reviewData.criteria
+        });
+      },
       error: (err) => { console.log('get reviews error: ', err); }
     });
   }
@@ -30,15 +34,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <StarRatings
-          rating= {4}
-          starRatedColor="green"
-          starDimension="50px"
-          numberOfStars={5}
-          name='rating'
-        />
-        <TotalReviews reviews={this.state.reviews}/>
-        <ReviewCriteria reviews={this.state.reviews}/>
+        test
       </div>
     );
   }
@@ -46,6 +42,7 @@ class App extends React.Component {
 
 ReactDOM.render(<App />, document.getElementById('app'));
 
+// pass in this.state to components
 
 // react star icons
 // https://www.npmjs.com/package/react-star-ratings
