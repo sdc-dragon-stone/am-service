@@ -16,7 +16,7 @@ class App extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     $.ajax({
       url: '/totalReviews',
       method: 'GET',

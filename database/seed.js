@@ -45,7 +45,7 @@ var createReview = () => {
     new Review({
       picture: picUrl,
       name,
-      date: date.toUTCString(),
+      date,
       text,
       accuracy,
       communication,
