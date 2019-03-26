@@ -3,7 +3,7 @@ mongoose.connect('mongodb://localhost/mashbnb', {useNewUrlParser: true});
 
 var db = mongoose.connection;
 db.on('error', () => { console.log('db connection error'); });
-db.once('open', () => { console.log('connected to db'); });
+db.once('open', () => { console.log('connected to db (db.js)'); });
 
 var reviewSchema = new mongoose.Schema({
   picture: String,
@@ -21,7 +21,6 @@ var reviewSchema = new mongoose.Schema({
 
 var Review = mongoose.model('Review', reviewSchema);
 
-// const Review = require('./seed.js');
 
 var reviewsByDate = (cb) => {
   Review.find({}).sort('-date').exec((err, reviews) => {
@@ -35,11 +34,3 @@ var reviewsByDate = (cb) => {
 
 module.exports.reviewsByDate = reviewsByDate;
 module.exports.Review = Review;
-
-
-
-// date to string
-// dateName.toUTCString());
-
-// sort by date
-// https://stackoverflow.com/questions/5825520/in-mongoose-how-do-i-sort-by-date-node-js

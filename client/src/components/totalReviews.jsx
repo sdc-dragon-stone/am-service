@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
 
 export default class TotalReviews extends React.Component {
   constructor(props) {
@@ -8,17 +7,10 @@ export default class TotalReviews extends React.Component {
   }
 
   render() {
-    if (this.props.reviews.length) {
-      return (
-        <div>
-          {this.props.reviews.length} Reviews
+    return (
+      <div>
 
-        </div>
-      );
-    } else {
-      return (
-        <div>Loading...</div>
-      );
-    }
+      </div>
+    );
   }
 }
