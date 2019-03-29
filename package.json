@@ -10,6 +10,7 @@
   "scripts": {
     "test-server": "mocha tests/testServer.js",
     "test-db": "mocha tests/testDB.js",
+    "test-client": "jest tests/client.test.js",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
     "seed": "node database/seed.js"
@@ -28,10 +29,12 @@
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
-    "babel": "^6.23.0",
+    "@babel/register": "^7.4.0",
     "babel-jest": "^24.5.0",
     "babel-loader": "^8.0.5",
-    "babel-preset-env": "^1.7.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "enzyme": "^3.9.0",

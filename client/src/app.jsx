@@ -34,7 +34,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        test
+        <TotalReviews reviews={this.state.reviews} criteria={this.state.criteria}/>
+        <ReviewCriteria reviews={this.state.reviews} criteria={this.state.criteria}/>
+        <IndivReviews reviews={this.state.reviews} criteria={this.state.criteria}/>
       </div>
     );
   }

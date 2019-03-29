@@ -23,7 +23,7 @@ var Review = mongoose.model('Review', reviewSchema);
 
 
 var reviewsByDate = (cb) => {
-  Review.find({}).sort('-date').exec((err, reviews) => {
+  Review.find({}).sort('-date').lean().exec((err, reviews) => {
     if (err) {
       console.log('sorted reviews error: ', err);
       cb(err, null);
