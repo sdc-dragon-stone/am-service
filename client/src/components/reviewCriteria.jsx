@@ -1,6 +1,6 @@
 import React from 'react';
 
-import StarRatings from 'react-star-ratings';
+import Stars from './Stars.jsx';
 
 
 export default class ReviewCriteria extends React.Component {
@@ -12,72 +12,37 @@ export default class ReviewCriteria extends React.Component {
     if (this.props.reviews.length) {
       return (
         <div id="revCriteriaContainer">
+
           <div id="line1">
+
             <div>Accuracy</div>
-            <div id="AccStars">
-              <StarRatings
-                rating={Math.round(this.props.criteria.accuracy)}
-                starDimension="18px"
-                starSpacing="3px"
-                starRatedColor="#008080"
-                starEmptyColor="#B8B8B8"
-              />
-            </div>
+            <div id="AccStars"><Stars rating={this.props.criteria.accuracy}/></div>
+
             <div>Location</div>
-            <div id="locStars">
-              <StarRatings
-                rating={Math.round(this.props.criteria.location)}
-                starDimension="18px"
-                starSpacing="3px"
-                starRatedColor="#008080"
-                starEmptyColor="#B8B8B8"
-              />
-            </div>
+            <div id="locStars"><Stars rating={this.props.criteria.location}/></div>
+
           </div>
+
           <div id="line2">
+
             <div>Communication</div>
-            <div id="comStars">
-              <StarRatings
-                rating={Math.round(this.props.criteria.communication)}
-                starDimension="18px"
-                starSpacing="3px"
-                starRatedColor="#008080"
-                starEmptyColor="#B8B8B8"
-              />
-            </div>
+            <div id="comStars"><Stars rating={this.props.criteria.communication}/></div>
+
             <div>Check-in</div>
-            <div id="checkStars">
-              <StarRatings
-                rating={Math.round(this.props.criteria.checkin)}
-                starDimension="18px"
-                starSpacing="3px"
-                starRatedColor="#008080"
-                starEmptyColor="#B8B8B8"
-              />
-            </div>
+            <div id="checkStars"><Stars rating={this.props.criteria.checkin}/></div>
+
           </div>
+
           <div id="line3">
+
             <div>Cleanliness</div>
-            <div id="cleanStars">
-              <StarRatings
-                rating={Math.round(this.props.criteria.cleanliness)}
-                starDimension="18px"
-                starSpacing="3px"
-                starRatedColor="#008080"
-                starEmptyColor="#B8B8B8"
-              />
-            </div>
+            <div id="cleanStars"><Stars rating={this.props.criteria.cleanliness}/></div>
+
             <div>Value</div>
-            <div id="valStars">
-              <StarRatings
-                rating={Math.round(this.props.criteria.value)}
-                starDimension="18px"
-                starSpacing="3px"
-                starRatedColor="#008080"
-                starEmptyColor="#B8B8B8"
-              />
-            </div>
+            <div id="valStars"><Stars rating={this.props.criteria.value}/></div>
+
           </div>
+
         </div>
       );
     } else {
