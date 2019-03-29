@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Stars from './Stars.jsx';
+import Stars from './stars.jsx';
 
 
 export default class ReviewCriteria extends React.Component {
