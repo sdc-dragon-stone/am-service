@@ -7,6 +7,6 @@ services:
   - mongodb
 
 script:
-  - npm test-client
-  - npm test-server
-  - npm test-db
+  - npm run test-client
+  - npm run test-server
+  - npm run test-db
