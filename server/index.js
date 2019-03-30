@@ -30,7 +30,7 @@ app.get('/totalReviews', (req, res) => {
 
       for (var i = 0; i < reviews.length; i++) {
         var formatDate = moment(reviews[i].date).format('MMMM YYYY').split(' ');
-        reviews[i].date = formatDate.join(' ');
+        reviews[i].shortDate = formatDate.join(' ');
 
         criteria.accuracy += reviews[i].accuracy;
         criteria.communication += reviews[i].communication;

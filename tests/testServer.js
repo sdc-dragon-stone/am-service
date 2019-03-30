@@ -7,6 +7,8 @@ var expect = require('chai').expect;
 var assert = require('chai').assert;
 var chaiHTTP = require('chai-http');
 
+var moment = require('moment');
+
 var app = require('../server/index.js');
 
 chai.use(chaiHTTP);
@@ -44,6 +46,19 @@ describe('Server Tests', () => {
       });
   });
 
+  it('Should save a modified version of the date property to shortDate', (done) => {
+    chai.request(app)
+      .get('/totalReviews')
+      .end((err, res) => {
+
+        var formatDate = moment(res.body.reviews[0].date).format('MMMM YYYY').split(' ');
+        var shortDate = formatDate.join(' ');
+
+        expect(shortDate).to.equal(res.body.reviews[0].shortDate);
+        done();
+      });
+  });
+
   it('Should respond with reviews in a specific data format', (done) => {
     chai.request(app)
       .get('/totalReviews')
@@ -52,6 +67,7 @@ describe('Server Tests', () => {
         expect(typeof res.body.reviews[0].picture).to.equal('string');
         expect(typeof res.body.reviews[0].name).to.equal('string');
         expect(typeof res.body.reviews[0].date).to.equal('string');
+        expect(typeof res.body.reviews[0].shortDate).to.equal('string');
         expect(typeof res.body.reviews[0].text).to.equal('string');
         expect(typeof res.body.reviews[0].accuracy).to.equal('number');
         expect(typeof res.body.reviews[0].communication).to.equal('number');

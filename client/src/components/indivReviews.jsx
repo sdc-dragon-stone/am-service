@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from 'jquery';
 
 export default class IndivReviews extends React.Component {
   constructor(props) {
@@ -18,7 +17,7 @@ export default class IndivReviews extends React.Component {
                   <img src={review.picture} width="45px" height="45px" style={{ borderRadius: '50%' }}></img>
                 </div>
                 <div>{review.name}</div>
-                <div>{review.date}</div>
+                <div>{review.shortDate}</div>
                 <div>{review.text}</div>
               </div>;
             }
@@ -32,5 +31,3 @@ export default class IndivReviews extends React.Component {
     }
   }
 }
-
-// <img src={this.state.reviews[0].picture} width="50px" height="50px" style={{borderRadius: '50%'}}></img>

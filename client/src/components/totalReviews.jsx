@@ -1,6 +1,6 @@
 import React from 'react';
 
-import StarRatings from 'react-star-ratings';
+import Stars from './stars.jsx';
 
 
 export default class TotalReviews extends React.Component {
@@ -13,15 +13,7 @@ export default class TotalReviews extends React.Component {
       return (
         <div id="totalRevsContainer">
           <div>{this.props.reviews.length} Reviews</div>
-          <div>
-            <StarRatings
-              rating={Math.round(this.props.criteria.totalRating)}
-              starDimension="18.5px"
-              starSpacing="3px"
-              starRatedColor="#008080"
-              starEmptyColor="#B8B8B8"
-            />
-          </div>
+          <div><Stars rating={this.props.criteria.totalRating}/></div>
         </div>
       );
     } else {
