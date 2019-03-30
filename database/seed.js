@@ -30,6 +30,7 @@ var genNum = () => {
 var createReview = () => {
 
   for (var k = 0; k < 100; k++) {
+    var name = genName({first: true, random: Math.random});
     var text = genReviewText();
     var date = genDate();
     var accuracy = genNum();
@@ -39,7 +40,6 @@ var createReview = () => {
     var checkin = genNum();
     var value = genNum();
     var avgRating = (accuracy + communication + cleanliness + location + checkin + value) / 6;
-    var name = genName({first: true, random: Math.random});
 
     new Review({
       picture: picUrl,
