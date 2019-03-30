@@ -1,9 +1,8 @@
-const mongoose = require('mongoose');
 const Review = require('./db.js').Review;
 
 var loremHipsum = require('lorem-hipsum');
 var dateGen = require('random-date-generator');
-var genName = require('sillyname');
+var genName = require('node-random-name');
 var picUrl = 'https://i.kinja-img.com/gawker-media/image/upload/s--K-l8wGJH--/c_scale,f_auto,fl_progressive,q_80,w_800/jqncra5xcu3ajxoreokh.jpg';
 
 
@@ -19,7 +18,7 @@ var genReviewText = () => {
 var genDate = () => {
   dateGen.getRandomDate();
   var startDate = new Date(1600, 1, 1);
-  var endDate = new Date(2500, 1, 1);
+  var endDate = new Date(2023, 1, 1);
   return dateGen.getRandomDateInRange(startDate, endDate);
 };
 
@@ -40,7 +39,7 @@ var createReview = () => {
     var checkin = genNum();
     var value = genNum();
     var avgRating = (accuracy + communication + cleanliness + location + checkin + value) / 6;
-    var name = genName();
+    var name = genName({first: true, random: Math.random});
 
     new Review({
       picture: picUrl,

@@ -10,7 +10,7 @@
   "scripts": {
     "test-server": "mocha --exit tests/testServer.js",
     "test-db": "mocha --exit tests/testDB.js",
-    "test-client": "jest --exit tests/client.test.js",
+    "test-client": "jest tests/client.test.js",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
     "seed": "node database/seed.js"
