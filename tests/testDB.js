@@ -104,6 +104,7 @@ describe('Database Tests', () => {
       expect(typeof results[0].checkin).to.equal('number');
       expect(typeof results[0].value).to.equal('number');
       expect(typeof results[0].avgRating).to.equal('number');
+      mongoose.connection.db.dropDatabase();
       done();
     });
   }).timeout(3000);

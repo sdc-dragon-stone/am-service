@@ -192,42 +192,7 @@ describe('Server Tests', () => {
         expect(typeof res.body.reviews[0].checkin).to.equal('number');
         expect(typeof res.body.reviews[0].value).to.equal('number');
         expect(typeof res.body.reviews[0].avgRating).to.equal('number');
-        done();
-      });
-  });
-
-  it('Should calculate the average rating of a category between all reviews', (done) => {
-    chai.request(app)
-      .get('/testTotalReviews')
-      .end((err, res) => {
-
-        var avgAccuracy = 0;
-
-        for (var i = 0; i < res.body.reviews.length; i++) {
-          avgAccuracy += res.body.reviews[i].accuracy;
-        }
-
-        avgAccuracy = (avgAccuracy / res.body.reviews.length);
-
-        expect(avgAccuracy).to.equal(res.body.criteria.accuracy);
-        done();
-      });
-  });
-
-  it('Should calculate the average rating between all reviews', (done) => {
-    chai.request(app)
-      .get('/testTotalReviews')
-      .end((err, res) => {
-
-        var avgRating = 0;
-
-        for (var i = 0; i < res.body.reviews.length; i++) {
-          avgRating += res.body.reviews[i].avgRating;
-        }
-
-        avgRating = (avgRating / res.body.reviews.length)
-
-        expect(avgRating).to.equal(res.body.criteria.totalRating);
+        mongoose.connection.db.dropDatabase();
         done();
       });
   });
