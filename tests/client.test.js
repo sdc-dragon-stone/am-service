@@ -6,7 +6,7 @@ import {expect} from 'chai';
 import TotalReviews from '../client/src/components/totalReviews.jsx';
 import ReviewCriteria from '../client/src/components/reviewCriteria.jsx';
 import IndivReviews from '../client/src/components/indivReviews.jsx';
-import Stars from '../client/src/components/stars.jsx';
+// import Stars from '../client/src/components/stars.jsx';
 
 Enzyme.configure({ adapter: new Adapter()} );
 
@@ -28,10 +28,10 @@ describe('<TotalReviews/>', () => {
     expect(wrapper.find('div').at(1).text()).to.equal('4 Reviews');
   });
 
-  it('Should contain a Stars component to display ratings stars', () => {
-    const wrapper = shallow(<TotalReviews reviews={[{}]} criteria={{criteria: {totalRating: 3}}}/>);
-    expect(wrapper.find(Stars)).to.have.lengthOf(1);
-  });
+  // it('Should contain a Stars component to display ratings stars', () => {
+  //   const wrapper = shallow(<TotalReviews reviews={[{}]} criteria={{criteria: {totalRating: 3}}}/>);
+  //   expect(wrapper.find(Stars)).to.have.lengthOf(1);
+  // });
 
 });
 
@@ -58,10 +58,10 @@ describe('<ReviewCriteria/>', () => {
     expect(wrapper.find('div').at(14).text()).to.equal('Value');
   });
 
-  it('Should display six Stars components if reviews are present', () => {
-    const wrapper = shallow(<ReviewCriteria reviews={[{}]} criteria={{criteria: {totalRating: 4}}}/>);
-    expect(wrapper.find(Stars)).to.have.length(6);
-  });
+  // it('Should display six Stars components if reviews are present', () => {
+  //   const wrapper = shallow(<ReviewCriteria reviews={[{}]} criteria={{criteria: {totalRating: 4}}}/>);
+  //   expect(wrapper.find(Stars)).to.have.length(6);
+  // });
 
 });
 
