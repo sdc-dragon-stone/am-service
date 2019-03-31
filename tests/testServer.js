@@ -6,10 +6,19 @@ var expect = require('chai').expect;
 var assert = require('chai').assert;
 var chaiHTTP = require('chai-http');
 
+const express = require('express');
+const app = express();
+const port = 3004;
+
+app.use(express.static(__dirname + '/../client/dist'));
+
+app.listen(port, () => {
+  console.log('Listening on port: ', port);
+});
+
 var moment = require('moment');
 var dateGen = require('random-date-generator');
 
-var app = require('../server/index.js');
 
 chai.use(chaiHTTP);
 
