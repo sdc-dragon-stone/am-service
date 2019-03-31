@@ -207,8 +207,7 @@ describe('Server Tests', () => {
           avgAccuracy += res.body.reviews[i].accuracy;
         }
 
-        avgAccuracy = (avgAccuracy / res.body.reviews.length).toFixed(2);
-        avgAccuracy = parseFloat(avgAccuracy);
+        avgAccuracy = (avgAccuracy / res.body.reviews.length);
 
         expect(avgAccuracy).to.equal(res.body.criteria.accuracy);
         done();
@@ -226,8 +225,7 @@ describe('Server Tests', () => {
           avgRating += res.body.reviews[i].avgRating;
         }
 
-        avgRating = (avgRating / res.body.reviews.length).toFixed(2);
-        avgRating = parseFloat(avgRating);
+        avgRating = (avgRating / res.body.reviews.length)
 
         expect(avgRating).to.equal(res.body.criteria.totalRating);
         done();
