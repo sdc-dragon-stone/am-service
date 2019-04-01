@@ -6,10 +6,10 @@ import TotalReviews from './components/totalReviews.jsx';
 import ReviewCriteria from './components/reviewCriteria.jsx';
 import IndivReviews from './components/indivReviews.jsx';
 
-import styled from 'styled-components'; // new
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  font-size: 50px
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
 `;
 
 class App extends React.Component {
