@@ -6,6 +6,12 @@ import TotalReviews from './components/totalReviews.jsx';
 import ReviewCriteria from './components/reviewCriteria.jsx';
 import IndivReviews from './components/indivReviews.jsx';
 
+import styled from 'styled-components'; // new
+
+const Wrapper = styled.div`
+  font-size: 50px
+`;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -32,11 +38,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <Wrapper>
         <TotalReviews reviews={this.state.reviews} criteria={this.state.criteria}/>
         <ReviewCriteria reviews={this.state.reviews} criteria={this.state.criteria}/>
         <IndivReviews reviews={this.state.reviews} criteria={this.state.criteria}/>
-      </div>
+      </Wrapper>
     );
   }
 }
