@@ -11,7 +11,6 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   margin: auto
   width: 600px
-  text-align: center
   font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
 `;
 

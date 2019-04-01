@@ -5,6 +5,7 @@ import Stars from './stars.jsx';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+display: flex
   padding-top: 16px;
   padding-bottom: 16px;
   font-weight: 800
