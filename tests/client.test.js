@@ -77,32 +77,27 @@ describe('<IndivReviews/>', () => {
     expect(wrapper.find('div')).to.have.length(1);
   });
 
-  it('Should display five divs for each review (plus one) if reviews are present', () => {
-    const wrapper = shallow(<IndivReviews reviews={[{}, {}]} criteria={{criteria: {totalRating: 4}}}/>);
-    expect(wrapper.find('div')).to.have.length(11);
-  });
-
   it('Should display one image for each review present', () => {
     const wrapper = shallow(<IndivReviews reviews={[{}, {}, {}]} criteria={{criteria: {totalRating: 4}}}/>);
-    expect(wrapper.find('img')).to.have.length(3);
+    expect(wrapper.find('RevPic')).to.have.length(3);
   });
 
   it('Should display a name for each review present', () => {
     const wrapper = shallow(<IndivReviews reviews={[review1, review2]} criteria={{criteria: {totalRating: 4}}}/>);
-    expect(wrapper.find('div').at(3).text()).to.equal('testName');
-    expect(wrapper.find('div').at(8).text()).to.equal('testName2');
+    expect(wrapper.find('RevName')).to.have.length(2);
+    expect(wrapper.find('RevName').at([1]).text()).to.equal(review2.name);
   });
 
   it('Should display a date for each review present', () => {
     const wrapper = shallow(<IndivReviews reviews={[review1, review2]} criteria={{criteria: {totalRating: 4}}}/>);
-    expect(wrapper.find('div').at(4).text()).to.equal('January 2019');
-    expect(wrapper.find('div').at(9).text()).to.equal('March 2019');
+    expect(wrapper.find('RevDate')).to.have.length(2);
+    expect(wrapper.find('RevDate').at([1]).text()).to.equal(review2.shortDate);
   });
 
   it('Should display review text for each review present', () => {
     const wrapper = shallow(<IndivReviews reviews={[review1, review2]} criteria={{criteria: {totalRating: 4}}}/>);
-    expect(wrapper.find('div').at(5).text()).to.equal('Test text');
-    expect(wrapper.find('div').at(10).text()).to.equal('Test text two');
+    expect(wrapper.find('RevText')).to.have.length(2);
+    expect(wrapper.find('RevText').at([1]).text()).to.equal(review2.text);
   });
 
 });
