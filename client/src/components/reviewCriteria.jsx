@@ -2,6 +2,44 @@ import React from 'react';
 
 import Stars from './stars.jsx';
 
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  // display: flex
+  padding-top: 14px;
+  padding-bottom: 15px;
+  font-weight: 400
+  font-size: 16px
+  color: #484848
+  border-bottom: 1px solid #d2d2d2
+`;
+
+const SingleLine = styled.div`
+  display: flex
+  padding-top: 4px;
+  padding-bottom: 10px;
+  font-weight: 400
+  font-size: 16px
+  color: #484848
+`;
+
+const Category = styled.div`
+  display: flex
+  width: 150px
+`;
+
+const StarPosLeft = styled.div`
+  display: flex
+  padding-left: 20px
+  padding-right: 30px
+`;
+
+const StarPosRight = styled.div`
+  display: flex
+  padding-left: 20px
+`;
+
+
 
 export default class ReviewCriteria extends React.Component {
   constructor(props) {
@@ -11,39 +49,33 @@ export default class ReviewCriteria extends React.Component {
   render() {
     if (this.props.reviews.length) {
       return (
-        <div id="revCriteriaContainer">
+        <Wrapper>
 
-          <div id="line1">
+          <SingleLine>
+            <Category>Accuracy</Category>
+            <StarPosLeft><Stars rating={this.props.criteria.accuracy}/></StarPosLeft>
 
-            <div>Accuracy</div>
-            <div id="AccStars"><Stars rating={this.props.criteria.accuracy}/></div>
+            <Category>Location</Category>
+            <StarPosRight><Stars rating={this.props.criteria.location}/></StarPosRight>
+          </SingleLine>
 
-            <div>Location</div>
-            <div id="locStars"><Stars rating={this.props.criteria.location}/></div>
+          <SingleLine>
+            <Category>Communication</Category>
+            <StarPosLeft><Stars rating={this.props.criteria.communication}/></StarPosLeft>
 
-          </div>
+            <Category>Check-in</Category>
+            <StarPosRight><Stars rating={this.props.criteria.checkin}/></StarPosRight>
+          </SingleLine>
 
-          <div id="line2">
+          <SingleLine>
+            <Category>Cleanliness</Category>
+            <StarPosLeft><Stars rating={this.props.criteria.cleanliness}/></StarPosLeft>
 
-            <div>Communication</div>
-            <div id="comStars"><Stars rating={this.props.criteria.communication}/></div>
+            <Category>Value</Category>
+            <StarPosRight><Stars rating={this.props.criteria.value}/></StarPosRight>
+          </SingleLine>
 
-            <div>Check-in</div>
-            <div id="checkStars"><Stars rating={this.props.criteria.checkin}/></div>
-
-          </div>
-
-          <div id="line3">
-
-            <div>Cleanliness</div>
-            <div id="cleanStars"><Stars rating={this.props.criteria.cleanliness}/></div>
-
-            <div>Value</div>
-            <div id="valStars"><Stars rating={this.props.criteria.value}/></div>
-
-          </div>
-
-        </div>
+        </Wrapper>
       );
     } else {
       return (
