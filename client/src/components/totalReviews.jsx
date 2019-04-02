@@ -27,6 +27,7 @@ export default class TotalReviews extends React.Component {
         <Wrapper>
           <div>{this.props.reviews.length} Reviews</div>
           <div><Stars rating={this.props.criteria.totalRating}/></div>
+          <input type="text" placeholder="Search reviews"></input>
         </Wrapper>
       );
     } else {
