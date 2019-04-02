@@ -6,6 +6,14 @@ import TotalReviews from './components/totalReviews.jsx';
 import ReviewCriteria from './components/reviewCriteria.jsx';
 import IndivReviews from './components/indivReviews.jsx';
 
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  margin: auto
+  width: 600px
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
+`;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -32,11 +40,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <Wrapper>
         <TotalReviews reviews={this.state.reviews} criteria={this.state.criteria}/>
         <ReviewCriteria reviews={this.state.reviews} criteria={this.state.criteria}/>
         <IndivReviews reviews={this.state.reviews} criteria={this.state.criteria}/>
-      </div>
+      </Wrapper>
     );
   }
 }

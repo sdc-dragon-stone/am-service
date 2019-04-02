@@ -1,0 +1,9 @@
+language: node_js
+
+services:
+  - mongodb
+
+script:
+  - npm run test-db
+  - npm run test-server
+  - npm run test-client
