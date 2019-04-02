@@ -18,19 +18,19 @@ describe('<TotalReviews/>', () => {
     expect(wrapper.find('div')).to.have.length(1);
   });
 
-  it('Should display three divs if reviews are present', () => {
-    const wrapper = shallow(<TotalReviews reviews={[{}]} criteria={{criteria: {totalRating: 4}}}/>);
-    expect(wrapper.find('div')).to.have.length(2);
-  });
-
   it('Should display correct number of total reviews', () => {
     const wrapper = shallow(<TotalReviews reviews={[{}, {}, {}, {}]} criteria={{criteria: {totalRating: 3}}}/>);
-    expect(wrapper.find('div').at(0).text()).to.equal('4 Reviews');
+    expect(wrapper.find('TotalRevs').text()).to.equal('4 Reviews');
   });
 
   it('Should contain a Stars component to display ratings stars', () => {
     const wrapper = shallow(<TotalReviews reviews={[{}]} criteria={{criteria: {totalRating: 3}}}/>);
-    expect(wrapper.find(Stars)).to.have.lengthOf(1);
+    expect(wrapper.find('StarRating')).to.have.lengthOf(1);
+  });
+
+  it('Should contain a search bar', () => {
+    const wrapper = shallow(<TotalReviews reviews={[{}]} criteria={{criteria: {totalRating: 3}}}/>);
+    expect(wrapper.find('SearchBar')).to.have.lengthOf(1);
   });
 
 });
