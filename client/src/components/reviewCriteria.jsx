@@ -5,7 +5,6 @@ import Stars from './stars.jsx';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  // display: flex
   padding-top: 14px;
   padding-bottom: 15px;
   font-weight: 400
@@ -22,23 +21,26 @@ const SingleLine = styled.div`
   font-size: 16px
   color: #484848
 `;
+SingleLine.displayName = 'SingleLine';
 
 const Category = styled.div`
   display: flex
   width: 150px
 `;
+Category.displayName = 'Category';
 
 const StarPosLeft = styled.div`
   display: flex
   padding-left: 20px
   padding-right: 30px
 `;
+StarPosLeft.displayName = 'StarPosLeft';
 
 const StarPosRight = styled.div`
   display: flex
   padding-left: 20px
 `;
-
+StarPosRight.displayName = 'StarPosRight';
 
 
 export default class ReviewCriteria extends React.Component {

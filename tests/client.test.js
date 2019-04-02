@@ -43,24 +43,25 @@ describe('<ReviewCriteria/>', () => {
     expect(wrapper.find('div')).to.have.length(1);
   });
 
-  it('Should display sixteen divs if reviews are present', () => {
+  it('Should display three lines of categories if reviews are present', () => {
     const wrapper = shallow(<ReviewCriteria reviews={[{}]} criteria={{criteria: {totalRating: 4}}}/>);
-    expect(wrapper.find('div')).to.have.length(16);
+    expect(wrapper.find('SingleLine')).to.have.length(3);
   });
 
-  it('Should display correct labels for review criteria', () => {
-    const wrapper = shallow(<ReviewCriteria reviews={[{}]} criteria={{criteria: {totalRating: 3}}}/>);
-    expect(wrapper.find('div').at(2).text()).to.equal('Accuracy');
-    expect(wrapper.find('div').at(4).text()).to.equal('Location');
-    expect(wrapper.find('div').at(7).text()).to.equal('Communication');
-    expect(wrapper.find('div').at(9).text()).to.equal('Check-in');
-    expect(wrapper.find('div').at(12).text()).to.equal('Cleanliness');
-    expect(wrapper.find('div').at(14).text()).to.equal('Value');
+  it('Should display six categories if reviews are present', () => {
+    const wrapper = shallow(<ReviewCriteria reviews={[{}]} criteria={{criteria: {totalRating: 4}}}/>);
+    expect(wrapper.find('Category')).to.have.length(6);
   });
 
-  it('Should display six Stars components if reviews are present', () => {
+  it('Should display six categories if reviews are present', () => {
     const wrapper = shallow(<ReviewCriteria reviews={[{}]} criteria={{criteria: {totalRating: 4}}}/>);
-    expect(wrapper.find(Stars)).to.have.length(6);
+    expect(wrapper.find('Category')).to.have.length(6);
+  });
+
+  it('Should display six total star ratings if reviews are present', () => {
+    const wrapper = shallow(<ReviewCriteria reviews={[{}]} criteria={{criteria: {totalRating: 4}}}/>);
+    expect(wrapper.find('StarPosLeft')).to.have.length(3);
+    expect(wrapper.find('StarPosRight')).to.have.length(3);
   });
 
 });
