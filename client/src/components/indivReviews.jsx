@@ -48,7 +48,7 @@ RevDate.displayName = 'RevDate';
 const RevText = styled.div`
   display:flex
   position: relative
-  bottom: 37px
+  bottom: 42px
   padding-top: 2px;
   font-weight: 400
   font-size: 16px
