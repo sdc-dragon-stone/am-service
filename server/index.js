@@ -5,7 +5,7 @@ const port = 3004;
 var reviewsByDate = require('../database/db.js').reviewsByDate;
 var moment = require('moment');
 
-app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static(__dirname + '/../public'));
 
 
 app.get('/totalReviews', (req, res) => {

@@ -2,8 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+
 const Wrapper = styled.div`
-  padding-bottom: 5px;
   font-weight: 400
   font-size: 16px
   color: #484848
@@ -48,7 +48,7 @@ RevDate.displayName = 'RevDate';
 const RevText = styled.div`
   display:flex
   position: relative
-  bottom: 37px
+  bottom: 42px
   padding-top: 2px;
   font-weight: 400
   font-size: 16px
@@ -59,7 +59,6 @@ RevText.displayName = 'RevText';
 export default class IndivReviews extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   render() {

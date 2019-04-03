@@ -1,12 +1,11 @@
 import React from 'react';
-import Enzyme, {shallow, mount} from 'enzyme';
+import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {expect} from 'chai';
 
-import TotalReviews from '../client/src/components/totalReviews.jsx';
-import ReviewCriteria from '../client/src/components/reviewCriteria.jsx';
-import IndivReviews from '../client/src/components/indivReviews.jsx';
-import Stars from '../client/src/components/stars.jsx';
+import TotalReviews from '../client/components/totalReviews.jsx';
+import ReviewCriteria from '../client/components/reviewCriteria.jsx';
+import IndivReviews from '../client/components/indivReviews.jsx';
 
 Enzyme.configure({ adapter: new Adapter()} );
 

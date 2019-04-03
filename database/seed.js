@@ -1,9 +1,8 @@
 const Review = require('./db.js').Review;
 
-var loremHipsum = require('lorem-hipsum');
-var dateGen = require('random-date-generator');
-var genName = require('node-random-name');
-var picUrl = 'https://i.kinja-img.com/gawker-media/image/upload/s--K-l8wGJH--/c_scale,f_auto,fl_progressive,q_80,w_800/jqncra5xcu3ajxoreokh.jpg';
+const loremHipsum = require('lorem-hipsum');
+const dateGen = require('random-date-generator');
+const faker = require('faker');
 
 
 var genReviewText = () => {
@@ -30,7 +29,8 @@ var genNum = () => {
 var createReview = () => {
 
   for (var k = 0; k < 100; k++) {
-    var name = genName({first: true, random: Math.random});
+    var picture = faker.image.avatar();
+    var name = faker.fake('{{name.firstName}}');
     var text = genReviewText();
     var date = genDate();
     var accuracy = genNum();
@@ -42,7 +42,7 @@ var createReview = () => {
     var avgRating = (accuracy + communication + cleanliness + location + checkin + value) / 6;
 
     new Review({
-      picture: picUrl,
+      picture,
       name,
       date,
       text,
