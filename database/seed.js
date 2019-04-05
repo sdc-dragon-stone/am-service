@@ -16,8 +16,8 @@ var genReviewText = () => {
 
 var genDate = () => {
   dateGen.getRandomDate();
-  var startDate = new Date(1600, 1, 1);
-  var endDate = new Date(2023, 1, 1);
+  var startDate = new Date(2015, 1, 1);
+  var endDate = new Date(2019, 4, 5);
   return dateGen.getRandomDateInRange(startDate, endDate);
 };
 
