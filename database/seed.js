@@ -21,11 +21,6 @@ var genDate = () => {
   return dateGen.getRandomDateInRange(startDate, endDate);
 };
 
-// var genNum = () => {
-//   return Math.floor(Math.random() * (6 - 1) + 1);
-// };
-
-
 var createReview = () => {
 
   for (var k = 0; k < 100; k++) {
