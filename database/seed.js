@@ -21,9 +21,9 @@ var genDate = () => {
   return dateGen.getRandomDateInRange(startDate, endDate);
 };
 
-var genNum = () => {
-  return Math.floor(Math.random() * (6 - 1) + 1);
-};
+// var genNum = () => {
+//   return Math.floor(Math.random() * (6 - 1) + 1);
+// };
 
 
 var createReview = () => {
@@ -33,12 +33,12 @@ var createReview = () => {
     var name = faker.fake('{{name.firstName}}');
     var text = genReviewText();
     var date = genDate();
-    var accuracy = genNum();
-    var communication = genNum();
-    var cleanliness = genNum();
-    var location = genNum();
-    var checkin = genNum();
-    var value = genNum();
+    var accuracy = faker.random.number({min: 1, max: 5});
+    var communication = faker.random.number({min: 1, max: 5});
+    var cleanliness = faker.random.number({min: 1, max: 5});
+    var location = faker.random.number({min: 1, max: 5});
+    var checkin = faker.random.number({min: 1, max: 5});
+    var value = faker.random.number({min: 1, max: 5});
     var avgRating = (accuracy + communication + cleanliness + location + checkin + value) / 6;
 
     new Review({

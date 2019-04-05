@@ -11,7 +11,7 @@ export default class Stars extends React.Component {
     return (
       <div>
         <StarRatings
-          rating={Math.round(this.props.rating)}
+          rating={this.props.rating}
           starDimension={this.props.size || '18px'}
           starSpacing="3px"
           starRatedColor="#008080"
