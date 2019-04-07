@@ -30,6 +30,8 @@ db.on('error', () => { console.log('test db connection error'); });
 db.once('open', () => { console.log('connected to test db (testDB.js)'); });
 
 var testDBReviewSchema = new mongoose.Schema({
+  indexes: Array,
+  id: Number,
   picture: String,
   name: String,
   date: Date,
@@ -57,6 +59,8 @@ var createDBReview = () => {
   for (var i = 0; i < 10; i++) {
 
     new testDBReview({
+      indexes: [14, 43, 27, 9, 32],
+      id: 5,
       picture: 'test url',
       name: 'test name',
       date: genDate(),
@@ -99,7 +103,7 @@ app.get('/testTotalReviews', (req, res) => {
       console.log('Get sorted reviews server error: ', err);
       res.send(404);
     } else {
-      var reviews = allReviews.slice(0, 11);
+      var reviews = allReviews.slice(0, 9);
       var criteria = {
         accuracy: 0,
         communication: 0,
@@ -157,7 +161,9 @@ describe('Server Tests', () => {
     chai.request(app)
       .get('/testTotalReviews')
       .end((err, res) => {
-        expect(res.body.reviews[0].date > res.body.reviews[1].date).to.equal(true);
+        expect(res.body.reviews[0].date >= res.body.reviews[1].date).to.equal(true);
+        expect(res.body.reviews[3].date >= res.body.reviews[4].date).to.equal(true);
+        expect(res.body.reviews[4].date > res.body.reviews[8].date).to.equal(true);
         done();
       });
   });
@@ -179,7 +185,10 @@ describe('Server Tests', () => {
     chai.request(app)
       .get('/testTotalReviews')
       .end((err, res) => {
+        console.log(res.body.reviews[0])
         expect(typeof res.body.reviews[0]).to.equal('object');
+        expect(Array.isArray(res.body.reviews[0].indexes)).to.equal(true);
+        expect(typeof res.body.reviews[0].id).to.equal('number');
         expect(typeof res.body.reviews[0].picture).to.equal('string');
         expect(typeof res.body.reviews[0].name).to.equal('string');
         expect(typeof res.body.reviews[0].date).to.equal('string');

@@ -11,6 +11,8 @@ db.on('error', () => { console.log('test db connection error'); });
 db.once('open', () => { console.log('connected to test db (testDB.js)'); });
 
 var testReviewSchema = new mongoose.Schema({
+  indexes: Array,
+  id: Number,
   picture: String,
   name: String,
   date: Date,
@@ -31,6 +33,8 @@ var createReview = () => {
   for (var i = 0; i < 10; i++) {
 
     new testReview({
+      indexes: [15, 43, 27, 9, 32],
+      id: 5,
       picture: 'test url',
       name: 'test name',
       date: new Date('December 17, 1995 03:24:00'),
@@ -93,6 +97,8 @@ describe('Database Tests', () => {
   it('Should store reviews with specific data format', (done) => {
     revsByDate((err, results) => {
       expect(typeof results[0]).to.equal('object');
+      expect(Array.isArray(results[0].indexes)).to.equal(true);
+      expect(typeof results[0].id).to.equal('number');
       expect(typeof results[0].picture).to.equal('string');
       expect(typeof results[0].name).to.equal('string');
       expect(typeof results[0].date).to.equal('object');

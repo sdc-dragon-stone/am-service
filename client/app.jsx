@@ -7,6 +7,7 @@ import ReviewCriteria from './components/reviewCriteria.jsx';
 import IndivReviews from './components/indivReviews.jsx';
 
 import styled from 'styled-components';
+import faker from 'faker';
 
 const Wrapper = styled.div`
   margin: auto
@@ -28,6 +29,7 @@ class App extends React.Component {
     $.ajax({
       url: '/totalReviews',
       method: 'GET',
+      data: { 'id': faker.random.number({min: 1, max: 100}) },
       success: (reviewData) => {
         this.setState({
           reviews: reviewData.reviews,
