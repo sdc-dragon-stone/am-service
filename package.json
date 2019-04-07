@@ -8,8 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "test-server": "mocha --exit tests/testServer.js",
-    "test-db": "mocha --exit tests/testDB.js",
+    "test-server": "mocha tests/testServer.js --exit",
+    "test-db": "mocha tests/testDB.js --exit",
     "test-client": "jest tests/client.test.js",
     "webpack": "webpack -d --watch",
     "server": "nodemon server/index.js",
@@ -37,6 +37,7 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "enzyme": "^3.9.0",

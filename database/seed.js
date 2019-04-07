@@ -21,9 +21,24 @@ var genDate = () => {
   return dateGen.getRandomDateInRange(startDate, endDate);
 };
 
+var genReviewList = (amount) => {
+  var reviews = [];
+  var num = 0;
+  for (var i = 0; i < amount; i++) {
+    num = faker.random.number({min: 0, max: 99});
+    if (!reviews.includes(num)) {
+      reviews.push(num);
+    }
+  }
+  return reviews;
+};
+
 var createReview = () => {
 
-  for (var k = 0; k < 100; k++) {
+  for (var k = 1; k <= 100; k++) {
+    var revAmount = faker.random.number({min: 7, max: 50});
+    var indexes = genReviewList(revAmount);
+    var id = k;
     var picture = faker.image.avatar();
     var name = faker.fake('{{name.firstName}}');
     var text = genReviewText();
@@ -37,6 +52,8 @@ var createReview = () => {
     var avgRating = (accuracy + communication + cleanliness + location + checkin + value) / 6;
 
     new Review({
+      indexes,
+      id,
       picture,
       name,
       date,
