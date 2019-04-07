@@ -8,8 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "test-server": "mocha --exit tests/testServer.js",
-    "test-db": "mocha --exit tests/testDB.js",
+    "test-server": "mocha tests/testServer.js --exit",
+    "test-db": "mocha tests/testDB.js --exit",
     "test-client": "jest tests/client.test.js",
     "webpack": "webpack -d --watch",
     "server": "nodemon server/index.js",
