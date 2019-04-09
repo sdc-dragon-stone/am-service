@@ -5,14 +5,15 @@ import Stars from './stars.jsx';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  display: flex
+  display: flex;
+  flex-direction: row;
   padding-top: 16px;
   padding-bottom: 22px;
-  font-weight: 800
-  font-size: 24px
-  color: #484848
-  border-top: 1px solid #d2d2d2
-  border-bottom: 1px solid #d2d2d2
+  font-weight: 800;
+  font-size: 24px;
+  color: #484848;
+  border-top: 1px solid #d2d2d2;
+  border-bottom: 1px solid #d2d2d2;
 `;
 
 const TotalRevs = styled.div`
@@ -23,12 +24,13 @@ TotalRevs.displayName = 'TotalRevs';
 
 const StarRating = styled.div`
   margin-top: 20px;
-  margin-right: 155px;
+  margin-right: 165px;
 `;
 StarRating.displayName = 'StarRating';
 
 const SearchBar = styled.input`
-  margin-top: 15px;
+  margin-top: 17px;
+  height: 25px;
 `;
 SearchBar.displayName = 'SearchBar';
 

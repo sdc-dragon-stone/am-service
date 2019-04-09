@@ -10,9 +10,9 @@ import styled from 'styled-components';
 import faker from 'faker';
 
 const Wrapper = styled.div`
-  margin: auto
-  width: 600px
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
+  margin: auto;
+  width: 600px;
+  font-family: Circular, BlinkMacSystemFont, Roboto,'Helvetica Neue', sans-serif;
 `;
 
 class App extends React.Component {
