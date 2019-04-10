@@ -24,12 +24,14 @@ TotalRevs.displayName = 'TotalRevs';
 
 const StarRating = styled.div`
   margin-top: 20px;
-  margin-right: 165px;
+  margin-right: 120px;
+  min-width: 150px;
 `;
 StarRating.displayName = 'StarRating';
 
 const SearchBar = styled.input`
   margin-top: 17px;
+  margin-left: 15px;
   height: 25px;
 `;
 SearchBar.displayName = 'SearchBar';
