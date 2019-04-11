@@ -26,9 +26,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    var urlParams = new URLSearchParams(window.location.search);
-    window.id = urlParams.get('id');
-
     $.ajax({
       url: '/totalReviews',
       method: 'GET',
