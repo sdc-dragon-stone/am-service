@@ -29,7 +29,7 @@ class App extends React.Component {
     $.ajax({
       url: '/totalReviews',
       method: 'GET',
-      data: { 'id': faker.random.number({min: 1, max: 100}) },
+      data: { 'id': window.id || faker.random.number({min: 1, max: 100}) },
       success: (reviewData) => {
         this.setState({
           reviews: reviewData.reviews,
