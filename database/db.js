@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mashbnb', {useNewUrlParser: true});
+
+const DBConnection = process.env.DB_CONNECTION_ATLAS;
+
+mongoose.connect(DBConnection, {useNewUrlParser: true});
+
+// mongoose.connect('mongodb://localhost/mashbnb', {useNewUrlParser: true});
 
 var db = mongoose.connection;
 db.on('error', () => { console.log('db connection error'); });

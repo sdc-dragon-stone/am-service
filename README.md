@@ -4,10 +4,10 @@ A project aimed at recreating the look and functionality of Airbnb's website
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/mash-fec/a-service
+  - https://github.com/mash-fec/j-service
+  - https://github.com/mash-fec/m-service
+  - https://github.com/mash-fec/v-service
 
 ## Table of Contents
 
@@ -17,9 +17,9 @@ A project aimed at recreating the look and functionality of Airbnb's website
 
 ## Usage
 - install dependencies using: npm install
-- run webpack to create bundle.js using: npm run react-dev
-- start express server and serve up bundle.js to browser using: npm run server-dev
+- run webpack to create bundle.js using: npm run webpack
 - seed data into the mongodb database using: npm run seed
+- start express server and serve up bundle.js to browser using: npm run server
 - open index.html file in client/dist folder and go to http://localhost:3004/
 
 ## Requirements

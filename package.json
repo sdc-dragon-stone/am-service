@@ -12,7 +12,7 @@
     "test-db": "mocha tests/testDB.js --exit",
     "test-client": "jest tests/client.test.js",
     "webpack": "webpack -d --watch",
-    "server": "nodemon server/index.js",
+    "start": "node server/index.js",
     "seed": "node database/seed.js"
   },
   "dependencies": {
