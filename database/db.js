@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const mongoose = require('mongoose');
 
 const DBConnection = process.env.DB_CONNECTION_ATLAS || 'mongodb://localhost/mashbnb';

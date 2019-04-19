@@ -16,6 +16,7 @@
     "seed": "node database/seed.js"
   },
   "dependencies": {
+    "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "jquery": "^3.3.1",
     "mongodb": "^3.1.13",
