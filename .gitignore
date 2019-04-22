@@ -23,6 +23,9 @@ coverage
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 public/bundle.js
 
+# Environment variables
+dbpass.js
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

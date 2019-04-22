@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const DBConnection = process.env.DB_CONNECTION_ATLAS || 'mongodb://localhost/mashbnb';
+const mongoAtlas = require('../dbpass.js');
+const DBConnection = mongoAtlas || 'mongodb://localhost/mashbnb';
 
 mongoose.connect(DBConnection, {useNewUrlParser: true});
 
