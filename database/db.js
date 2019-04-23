@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mashbnb', {useNewUrlParser: true});
+
+require('dotenv').config();
+
+const DBConnection = process.env.DB_CONNECTION_ATLAS || 'mongodb://localhost/mashbnb';
+
+mongoose.connect(DBConnection, {useNewUrlParser: true});
 
 var db = mongoose.connection;
-db.on('error', () => { console.log('db connection error'); });
+db.on('error', () => { console.log('db connection error: ', DBConnection); });
 db.once('open', () => { console.log('connected to db (db.js)'); });
 
 var reviewSchema = new mongoose.Schema({

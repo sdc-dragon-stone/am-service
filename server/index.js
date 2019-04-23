@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3004;
+const port = process.env.PORT || 3004;
 
 var reviewsByDate = require('../database/db.js').reviewsByDate;
 var reviewById = require('../database/db.js').reviewById;
