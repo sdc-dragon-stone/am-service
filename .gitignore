@@ -24,7 +24,7 @@ coverage
 public/bundle.js
 
 # Environment variables
-dbpass.js
+.env
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
