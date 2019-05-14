@@ -35,7 +35,7 @@ var genReviewList = (amount) => {
 
 var createReview = () => {
 
-  for (var k = 1; k <= 100; k++) {
+  for (var k = 1; k <= 100000; k++) {
     var revAmount = faker.random.number({min: 7, max: 50});
     var indexes = genReviewList(revAmount);
     var id = k;

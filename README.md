@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Project Name
 Mashbnb
 A project aimed at recreating the look and functionality of Airbnb's website
@@ -87,6 +86,3 @@ tofu. Ennui Vice.',
   value: '3.05',
   totalRating: '3.08' }
 
-=======
-# am-service
->>>>>>> 385c7e75398d5f3038d7c13433d3cfb91549ed76
