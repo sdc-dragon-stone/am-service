@@ -25,11 +25,17 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
+  get() {
+    console.log(window.location);
+    var id = window.location.pathname;
+    if (id === '/') {
+      id = '/12';
+    }
+
     $.ajax({
-      url: '/totalReviews',
+      url: `/totalReviews${id}`,
       method: 'GET',
-      data: { 'id': window.id || faker.random.number({min: 1, max: 100}) },
+      data: { 'id': faker.random.number({min: 1, max: 100}) },
       success: (reviewData) => {
         this.setState({
           reviews: reviewData.reviews,
@@ -38,6 +44,9 @@ class App extends React.Component {
       },
       error: (err) => { console.log('get reviews error: ', err); }
     });
+  }
+  componentDidMount() {
+    this.get();
   }
 
   render() {

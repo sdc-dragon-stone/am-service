@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const moment = require('moment');
 require('dotenv').config();
 
 const DBConnection = process.env.DB_CONNECTION_ATLAS || 'mongodb://localhost/mashbnb';
@@ -30,13 +30,7 @@ var Review = mongoose.model('Review', reviewSchema);
 
 
 var reviewsByDate = (cb) => {
-  Review.find({}).sort('-date').lean().exec((err, reviews) => {
-    if (err) {
-      console.log('sorted reviews error: ', err);
-      cb(err, null);
-    }
-    cb(null, reviews);
-  });
+
 };
 
 var reviewById = (cb, id) => {
@@ -45,7 +39,51 @@ var reviewById = (cb, id) => {
       console.log('sorted reviews error: ', err);
       cb(err, null);
     }
-    cb(null, review);
+    var sorted = review.indexes.sort((a, b) => {
+      return a - b;
+    });
+    Review.find({}).sort('-date').lean().exec((err, allReviews) => {
+      if (err) {
+        console.log('sorted reviews error: ', err);
+        cb(err, null);
+      }
+      var reviews = [];
+      for (var k = 0; k < sorted.length; k++) {
+        var index = sorted[k];
+        reviews.push(allReviews[index]);
+      }
+
+      var criteria = {
+        accuracy: 0,
+        communication: 0,
+        cleanliness: 0,
+        location: 0,
+        checkin: 0,
+        value: 0,
+        totalRating: 0
+      };
+
+      for (var i = 0; i < reviews.length; i++) {
+        var formatDate = moment(reviews[i].date).format('MMMM YYYY').split(' ');
+        reviews[i].shortDate = formatDate.join(' ');
+
+        criteria.accuracy += reviews[i].accuracy;
+        criteria.communication += reviews[i].communication;
+        criteria.cleanliness += reviews[i].cleanliness;
+        criteria.location += reviews[i].location;
+        criteria.checkin += reviews[i].checkin;
+        criteria.value += reviews[i].value;
+        criteria.totalRating += reviews[i].avgRating;
+      }
+
+      for (var category in criteria) {
+        criteria[category] = (criteria[category] / reviews.length).toFixed(2);
+        criteria[category] = parseFloat(criteria[category]);
+      }
+      // console.log("*******db.js ", {reviews, criteria});
+
+      cb(null, {reviews, criteria});
+    });
   });
 };
 
