@@ -20,19 +20,6 @@ var genDate = () => {
   return dateGen.getRandomDateInRange(startDate, endDate);
 };
 
-var genReviewList = (amount) => {
-  var reviews = [];
-  var num = 0;
-  for (var i = 0; i < amount; i++) {
-    num = faker.random.number({min: 0, max: 99});
-    if (!reviews.includes(num)) {
-      reviews.push(num);
-    }
-  }
-  return reviews;
-};
-
-
 var createReview = () => {
   var bulkData = [];
   for (var k = 1; k <= 100; k++) {

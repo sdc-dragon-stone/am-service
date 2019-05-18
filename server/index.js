@@ -7,6 +7,7 @@ const {findOneReview, getReviewById, deleteOneReview,
 
 var moment = require('moment');
 app.use(bodyParser);
+app.use('/', express.static(__dirname + '/../public'));
 app.use('/:id', express.static(__dirname + '/../public'));
 
 
