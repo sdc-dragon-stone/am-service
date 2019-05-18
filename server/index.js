@@ -1,73 +1,79 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3004;
-
-var reviewsByDate = require('../database/db.js').reviewsByDate;
-var reviewById = require('../database/db.js').reviewById;
+const bodyParser = require('body-parser').json();
+const {findOneReview, getReviewById, deleteOneReview,
+       updateOneReview, insertOneReview} = require('../database/db.js');
 
 var moment = require('moment');
+app.use(bodyParser);
+app.use('/', express.static(__dirname + '/../public'));
+app.use('/:id', express.static(__dirname + '/../public'));
 
-app.use(express.static(__dirname + '/../public'));
 
-app.get('/totalReviews', (req, res) => {
-  var id = parseInt(req.query.id);
-
-  reviewById((err, oneReview) => {
-    if (err) {
-      console.log('Get review error: ', err);
-      res.send(404);
-    } else {
-      reviewsByDate((err, allReviews) => {
-        if (err) {
-          console.log('Get sorted reviews server error: ', err);
-          res.send(404);
-        } else {
-          var reviews = [];
-          var sorted = oneReview.indexes.sort((a, b) => {
-            return a - b;
-          });
-
-          for (var k = 0; k < sorted.length; k++) {
-            var index = sorted[k];
-            reviews.push(allReviews[index]);
-          }
-
-          var criteria = {
-            accuracy: 0,
-            communication: 0,
-            cleanliness: 0,
-            location: 0,
-            checkin: 0,
-            value: 0,
-            totalRating: 0
-          };
-
-          for (var i = 0; i < reviews.length; i++) {
-            var formatDate = moment(reviews[i].date).format('MMMM YYYY').split(' ');
-            reviews[i].shortDate = formatDate.join(' ');
-
-            criteria.accuracy += reviews[i].accuracy;
-            criteria.communication += reviews[i].communication;
-            criteria.cleanliness += reviews[i].cleanliness;
-            criteria.location += reviews[i].location;
-            criteria.checkin += reviews[i].checkin;
-            criteria.value += reviews[i].value;
-            criteria.totalRating += reviews[i].avgRating;
-          }
-
-          for (var category in criteria) {
-            criteria[category] = (criteria[category] / reviews.length).toFixed(2);
-            criteria[category] = parseFloat(criteria[category]);
-          }
-
-          res.send({reviews, criteria});
-        }
-      });
-    }
-  }, id);
-
+app.get('/totalReviews/:id', (req, res) => {
+  console.log("get Review from server", req.params.id);
+  var id = parseInt(req.params.id);
+  getReviewById(id)
+  .then((result) => {
+    res.status(200).send(result);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.send(err);
+  })
 });
 
+app.post('/createOne/:id', (req, res) => {
+  console.log(req.body);
+  insertOneReview(req.body)
+  .then((result) => {
+    console.log("insert ", result);
+    res.status(200).send(result);;
+  })
+  .catch((err) => {
+    console.log("Post Request ", err);
+    res.send(err);
+  })
+})
+
+app.put('/updateOne/:id', (req, res) => {
+  var id = parseInt(req.params.id);
+  updateOneReview({_id: id}, {$set: req.body})
+  .then((result) => {
+    console.log("Updated one review ",result);
+    res.status(200).send(result);
+  })
+  .catch((err) => {
+    console.log("put request", err);
+    res.send(err);
+  })
+})
+
+app.get('/readOne/:id', (req, res) => {
+  findOneReview(req.body)
+  .then((result) => {
+    console.log("Read one review ",result);
+    res.status(200).send(result);
+  })
+  .catch((err) => {
+    console.log("put request", err);
+    res.send(err);
+  })
+})
+
+app.delete('/deleteOne/:id', (req, res) => {
+  var id = parseInt(req.params.id);
+  deleteOneReview({_id: id})
+  .then((result) => {
+    console.log("Delete one review ", result);
+    res.status(200).send(result);
+  })
+  .catch((err) => {
+    console.log("error in deleting ", err);
+    res.send(err);
+  });
+})
 
 app.listen(port, () => {
   console.log('Listening on port: ', port);
