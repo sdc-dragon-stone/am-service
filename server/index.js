@@ -1,27 +1,78 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3004;
-
-var reviewsByDate = require('../database/db.js').reviewsByDate;
-var reviewById = require('../database/db.js').reviewById;
+const bodyParser = require('body-parser').json();
+const {findOneReview, getReviewById, deleteOneReview,
+       updateOneReview, insertOneReview} = require('../database/db.js');
 
 var moment = require('moment');
-
+app.use(bodyParser);
 app.use('/:id', express.static(__dirname + '/../public'));
 
+
 app.get('/totalReviews/:id', (req, res) => {
-  console.log("from server", req.params.id);
+  console.log("get Review from server", req.params.id);
   var id = parseInt(req.params.id);
-  reviewById((err, sorted) => {
-    if (err) {
-      console.log('Get review error: ', err);
-      res.send(404);
-    } else {
-      res.send(sorted);
-    }
-  }, id);
+  getReviewById(id)
+  .then((result) => {
+    res.status(200).send(result);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.send(err);
+  })
 });
 
+app.post('/createOne/:id', (req, res) => {
+  console.log(req.body);
+  insertOneReview(req.body)
+  .then((result) => {
+    console.log("insert ", result);
+    res.status(200).send(result);;
+  })
+  .catch((err) => {
+    console.log("Post Request ", err);
+    res.send(err);
+  })
+})
+
+app.put('/updateOne/:id', (req, res) => {
+  var id = parseInt(req.params.id);
+  updateOneReview({_id: id}, {$set: req.body})
+  .then((result) => {
+    console.log("Updated one review ",result);
+    res.status(200).send(result);
+  })
+  .catch((err) => {
+    console.log("put request", err);
+    res.send(err);
+  })
+})
+
+app.get('/readOne/:id', (req, res) => {
+  findOneReview(req.body)
+  .then((result) => {
+    console.log("Read one review ",result);
+    res.status(200).send(result);
+  })
+  .catch((err) => {
+    console.log("put request", err);
+    res.send(err);
+  })
+})
+
+app.delete('/deleteOne/:id', (req, res) => {
+  var id = parseInt(req.params.id);
+  deleteOneReview({_id: id})
+  .then((result) => {
+    console.log("Delete one review ", result);
+    res.status(200).send(result);
+  })
+  .catch((err) => {
+    console.log("error in deleting ", err);
+    res.send(err);
+  });
+})
 
 app.listen(port, () => {
   console.log('Listening on port: ', port);

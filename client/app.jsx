@@ -38,7 +38,7 @@ class App extends React.Component {
       data: { 'id': faker.random.number({min: 1, max: 100}) },
       success: (reviewData) => {
         this.setState({
-          reviews: reviewData.reviews,
+          reviews: reviewData.subReviews,
           criteria: reviewData.criteria
         });
       },
