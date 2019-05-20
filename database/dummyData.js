@@ -3,7 +3,9 @@ const moment = require('moment');
 const loremHipsum = require('lorem-hipsum');
 const dateGen = require('random-date-generator');
 const faker = require('faker');
-
+const Review = require('./db.js').Review;
+Review.collection.drop();
+Review.collection.initializeOrderedBulkOp
 var genReviewText = () => {
   return loremHipsum({
     count: 3,
@@ -12,6 +14,7 @@ var genReviewText = () => {
     sentenceUpperBound: 5
   });
 };
+
 
 var genDate = () => {
   dateGen.getRandomDate();
@@ -22,7 +25,9 @@ var genDate = () => {
 
 var createReview = () => {
   var bulkData = [];
-  for (var k = 1; k <= 100; k++) {
+  const startTime = new Date();
+  for (var k = 1; k <= 250000; k++) {
+
     var revAmount = faker.random.number({min: 7, max: 50});
     var reviewArray = [];
     var tempReview = {};
@@ -72,9 +77,37 @@ var createReview = () => {
     tempReview.value = parseFloat((tempReview.value / revAmount).toFixed(2));
     tempReview.avgRating = parseFloat((tempReview.avgRating / revAmount)).toFixed(2);
 
-    bulkData.push(tempReview);
+    // bulkData.push(tempReview);
+    console.log("loop ", k);
+    var count = 0;
+    if (k === 250000) {
+      Review.insertMany(bulkData, (err)=> {
+        if (err) {
+          console.log("error from seed.js", err);
+        } else {
+          console.log("data is seeded");
+        }
+      })
+      // count++;
+      // k = 1;
+      bulkData = [];
+    }
+    //end of for loop
   }
+  const used = process.memoryUsage();
+  for (let key in used) {
+    console.log(`${key} ${Math.round(used[key] / 1024 / 1024 * 100) / 100} MB`);
+  }
+  const elapsed = new Date() - startTime;
+  var resultInMinutes = Math.round(elapsed / 60000);
+  console.log("total time: ", resultInMinutes);
   return bulkData;
 };
-
+createReview();
 module.exports = createReview;
+
+
+
+
+
+
