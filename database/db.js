@@ -111,3 +111,4 @@ module.exports.deleteOneReview = deleteOneReview;
 module.exports.updateOneReview = updateOneReview;
 module.exports.insertOneReview = insertOneReview;
 module.exports.Review = Review;
+module.exports.db = db;
