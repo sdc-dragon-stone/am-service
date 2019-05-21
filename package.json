@@ -13,9 +13,11 @@
     "test-client": "jest tests/client.test.js",
     "webpack": "webpack -d --watch",
     "start": "node server/index.js",
-    "seed": "node database/seed.js"
+    "script": "node database/script.js",
+    "seed": "mongoimport --numInsertionWorkers 8 --db mashbnb1  --collection reviews --jsonArray ./database/data.json --maintainInsertionOrder"
   },
   "dependencies": {
+    "csv-writer": "^1.3.0",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "jquery": "^3.4.1",
