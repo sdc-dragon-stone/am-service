@@ -18,20 +18,6 @@ db.on('disconnected', () => {
   console.log("mongoose is disconnected from database");
 })
 
-var subReviewSchema = new mongoose.Schema({
-  picture: String,
-  name: String,
-  date: Date,
-  text: String,
-  accuracy: Number,
-  communication: Number,
-  cleanliness: Number,
-  location: Number,
-  checkin: Number,
-  value: Number,
-  avgRating: Number,
-})
-
 var reviewSchema = new mongoose.Schema({
   _id: Number,
   accuracy: Number,
@@ -41,7 +27,7 @@ var reviewSchema = new mongoose.Schema({
   checkin: Number,
   value: Number,
   avgRating: Number,
-  subReview: [subReviewSchema],
+  subReview: Object
 });
 
 var Review = mongoose.model('Review', reviewSchema);

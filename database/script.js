@@ -1,10 +1,12 @@
 const fs = require("fs");
 const path = require("path");
 const createOneObject = require("./dummyData.js");
+const zlib = require('zlib');
+const zip = zlib.createGzip();
 
-const writeStream = fs.createWriteStream(path.join(__dirname, "data.json"), {
+const writeStream = fs.createWriteStream(path.join(__dirname, "data.json.gz"), {
   highWaterMark: 64 * 1024
-});
+})
 
 var startTime = new Date();
 function writeOneMillionTimes(amount, writer, data, endcoding, callback) {

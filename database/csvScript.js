@@ -1,30 +1,36 @@
+const createReview = require('./dummyData.js');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const csvWriter = createCsvWriter({
   path: 'out.csv',
   header: [
-    {id: 'name', title: 'Name'},
-    {id: 'surname', title: 'Surname'},
-    {id: 'age', title: 'Age'},
-    {id: 'gender', title: 'Gender'},
+    {id: '_id', title: 'Name'},
+    {id: 'accuracy', title: 'accuracy'},
+    {id: 'communication', title: 'communication'},
+    {id: 'cleanliness', title: 'cleanliness'},
+    {id: 'location', title: 'location'},
+    {id: 'checkin', title: 'checkin'},
+    {id: 'value', title: 'value'},
+    {id: 'avgRating', title: 'avgRating'},
+    {id: 'subReview', title: 'subReview'}
   ]
 });
-
-const data = [
+const data = createReview(100, 1);
+const data1 = [
   {
     name: 'John',
     surname: 'Snow',
     age: 26,
-    gender: [{a : 1},{a : 1},{a : 1}]
+    gender: JSON.stringify([{a : 1},{a : 1},{a : 1}]),
   }, {
     name: 'Clair',
     surname: 'White',
     age: 33,
-    gender: [{a : 1},{a : 1},{a : 1}],
+    gender: JSON.stringify([{a : 1},{a : 1},{a : 1}]),
   }, {
     name: 'Fancy',
     surname: 'Brown',
     age: 78,
-    gender: [{a : 1},{a : 1},{a : 1}]
+    gender: JSON.stringify([{a : 1},{a : 1},{a : 1}])
   }
 ];
 
