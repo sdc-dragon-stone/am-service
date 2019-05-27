@@ -1,10 +1,8 @@
 const createReview = require("./dummyData");
 const Review = require("./db.js").Review;
 const db = require("./db.js").db;
-// const data = createReview();
-// Review.collection.drop();
-var startTime = new Date();
 
+var startTime = new Date();
 async function seed(totalAmount, count, batchSize) {
   //count will always start from 1;
   console.log("----------------------\n seeding at : ", count, "\n----------------------");
@@ -21,7 +19,7 @@ async function seed(totalAmount, count, batchSize) {
     console.log("total time: ", resultInMinutes);
   }
 }
-seed(1000000, 1, 25000);
+seed(10000000, 1, 120000);
 
 // batchSize 25000 for 1M => 18.93 min
 // batchSize 25000 for 1M => 13.33 min schema changed
@@ -35,6 +33,9 @@ seed(1000000, 1, 25000);
 // batchSize 250K for 10M => Heap Error
 // batchSize 200K for 10M => Mongoose Connection disconnected ( possibly insertMany has limit of operation)
 // batchSize 100K for 10M => 73.41 min
+
+// window restarted then batchSize 120K for 10M worked (no more Mongoose Connection error until over 130K)
+// Mongoose Connection error got if schema data is big
 
 
 

@@ -1,13 +1,19 @@
+
 const mongoose = require('mongoose');
 const moment = require('moment');
 require('dotenv').config();
 
-const DBConnection = process.env.DB_CONNECTION_ATLAS || 'mongodb://localhost/mashbnb1';
+const DBConnection = process.env.DB_CONNECTION_ATLAS || 'mongodb://127.0.0.1/mashbnb1';
 
-mongoose.connect(DBConnection, {useNewUrlParser: true});
+
+
+mongoose.connect(DBConnection, {useNewUrlParser: true}).then(() => {
+console.log("Connected to Database");
+}).catch((err) => {
+    console.log("Not Connected to Database ERROR! ", err);
+});
+
 var db = mongoose.connection;
-
-
 db.on('connected', () => {
   console.log("mongoose is connected to database");
 })
