@@ -26,7 +26,7 @@ function createReview(amount, id) {
     if (k % 49999 === 0) {
       console.log(k + 1, "records are generated");
     }
-    var revAmount = faker.random.number({ min: 5, max: 7 });
+    var revAmount = faker.random.number({ min: 3, max: 5 });
     var reviewArray = [];
     var tempReview = {};
     tempReview._id = id;
@@ -95,18 +95,7 @@ function createReview(amount, id) {
     bulk.push(tempReview);
     //end of loop
   }
-  // tempReview.subReview = reviewArray;
-  // tempReview.accuracy = faker.random.number({ min: 1, max: 5 });
-  // tempReview.communication = faker.random.number({ min: 1, max: 5 });
-  // tempReview.cleanliness = faker.random.number({ min: 1, max: 5 });
-  // tempReview.location = faker.random.number({ min: 1, max: 5 });
-  // tempReview.checkin = faker.random.number({ min: 1, max: 5 });
-  // tempReview.value = faker.random.number({ min: 1, max: 5 });
-  // tempReview.avgRating = faker.random.number({ min: 1, max: 5 });
-  // console.log(bulk);
   return bulk;
 }
-
-// createReview(10, 1);
 
 module.exports = createReview;
