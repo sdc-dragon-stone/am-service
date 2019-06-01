@@ -1,35 +1,33 @@
+
 const mongoose = require('mongoose');
 const moment = require('moment');
 require('dotenv').config();
 
-const DBConnection = process.env.DB_CONNECTION_ATLAS || 'mongodb://localhost/mashbnb1';
+const DBConnection = process.env.DB_CONNECTION_ATLAS || 'mongodb://127.0.0.1/mashbnb1';
 
-mongoose.connect(DBConnection, {useNewUrlParser: true});
+
+function retryableConnection() {
+  mongoose.connect(DBConnection, {useNewUrlParser: true}).then(() => {
+  console.log("Connected to Database");
+  }).catch((err) => {
+    console.log("MongoDB disconnected Error", err)
+    console.log('MongoDB connection unsuccessful, retry after 5 seconds.')
+    setTimeout(retryableConnection, 5000);
+  });
+}
+retryableConnection();
+
 var db = mongoose.connection;
-
-
 db.on('connected', () => {
   console.log("mongoose is connected to database");
 })
 db.on('error', (err) => {
-  console.log("mongoose connection error", err);
+  console.log("mongoose connection error");
+  retryableConnection();
 })
 db.on('disconnected', () => {
   console.log("mongoose is disconnected from database");
-})
-
-var subReviewSchema = new mongoose.Schema({
-  picture: String,
-  name: String,
-  date: Date,
-  text: String,
-  accuracy: Number,
-  communication: Number,
-  cleanliness: Number,
-  location: Number,
-  checkin: Number,
-  value: Number,
-  avgRating: Number,
+  retryableConnection();
 })
 
 var reviewSchema = new mongoose.Schema({
@@ -41,7 +39,7 @@ var reviewSchema = new mongoose.Schema({
   checkin: Number,
   value: Number,
   avgRating: Number,
-  subReview: [subReviewSchema],
+  subReview: Object
 });
 
 var Review = mongoose.model('Review', reviewSchema);
@@ -111,3 +109,4 @@ module.exports.deleteOneReview = deleteOneReview;
 module.exports.updateOneReview = updateOneReview;
 module.exports.insertOneReview = insertOneReview;
 module.exports.Review = Review;
+module.exports.db = db;
