@@ -23,8 +23,9 @@ var genDate = () => {
 function createReview(amount, id) {
   var bulk = [];
   for (var k = 0; k < amount; k++) {
-    if (k % 49999 === 0) {
-      console.log(k + 1, "records are generated");
+    var temp = amount / 10;
+    if (k % temp === 0) {
+      console.log(k + temp, "records are generated");
     }
     var revAmount = faker.random.number({ min: 3, max: 5 });
     var reviewArray = [];
