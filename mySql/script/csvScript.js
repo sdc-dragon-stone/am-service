@@ -3,8 +3,8 @@ const createTables = require('../migrations/createTables.js').createTables;
 const dropTables = require('../migrations/createTables.js').dropTables;
 const createReview = require("./dummyData.js").createReview;
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
-const path1 = '/Users/andrewatm/Desktop/rpt12/sdc/am-service/mySql/csv/reviews.csv'
-const path2 = '/Users/andrewatm/Desktop/rpt12/sdc/am-service/mySql/csv/sub_reviews.csv'
+const path1 = '/Users/andrewatm/Desktop/rpt12/sdc/am-service/mysql/csv/reviews.csv'
+const path2 = '/Users/andrewatm/Desktop/rpt12/sdc/am-service/mysql/csv/sub_reviews.csv'
 const option = {
   path: path1,
   header: [

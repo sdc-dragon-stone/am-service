@@ -32,8 +32,8 @@ public/bundle.js
 !.elasticbeanstalk/*.global.yml
 
 # CSV record
-mySql/csv/reviews.csv
-mySql/csv/sub_reviews.csv
+mysql/csv/reviews.csv
+mysql/csv/sub_reviews.csv
 
 # vsCode debugger Config
 .vscode/
