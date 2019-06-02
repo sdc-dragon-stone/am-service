@@ -1,6 +1,6 @@
-const { createTables, dropTables } = require("./migrations/createTables.js.js");
-const runScript = require("./script/csvScript.js.js").runScript;
-const knex = require("./script/db.js.js").knex;
+const { createTables, dropTables } = require("./migrations/createTables.js");
+const runScript = require("./script/csvScript.js").runScript;
+const knex = require("./script/db.js").knex;
 
 async function seed_script(total, count, batch, stop) {
   await dropTables(knex)
