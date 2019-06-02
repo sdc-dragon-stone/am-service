@@ -36,4 +36,4 @@ mySql/csv/reviews.csv
 mySql/csv/sub_reviews.csv
 
 # vsCode debugger Config
-.vscode
+.vscode/
