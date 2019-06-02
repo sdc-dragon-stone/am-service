@@ -30,3 +30,10 @@ public/bundle.js
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# CSV record
+mySql/csv/reviews.csv
+mySql/csv/sub_reviews.csv
+
+# vsCode debugger Config
+.vdcode/
