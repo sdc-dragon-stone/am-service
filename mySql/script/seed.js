@@ -13,7 +13,7 @@ async function seed_script(total, count, batch, stop) {
     .catch(err => {
       console.log(err);
     });
-  runScript(total, count, batch, stop);
+  await runScript(total, count, batch, stop);
 }
 seed_script(10000000, 1, 150000, false);
 
