@@ -40,49 +40,108 @@ npm install -g webpack
 npm install
 ```
 
-API -
+## API Requests
 
-  app.get('/totalReviews', (req, res) => {
+### Reviews: GET request to '/totalReviews/:id'
 
-    reviewsByDate((err, allReviews) => {
+```sh
+{ subReviews:
+   [ { picture:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/jodytaggart/128.jpg',
+       name: 'Walker',
+       text: 'Selvage. Wolf. Meggings Austin street art.',
+       date: 2019-03-16T22:27:47.872Z,
+       shortDate: 'March 2019' },
+     { picture:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/timgthomas/128.jpg',
+       name: 'Berta',
+       text:
+        'Normcore direct trade  retro tousled. Cray banjo retro. Food truck.',
+       date: 2018-10-16T23:25:55.076Z,
+       shortDate: 'October 2018' },
+     { picture:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/justinrob/128.jpg',
+       name: 'Camden',
+       text:
+        'Semiotics freegan whatever Truffaut. Vegan 90\'s food truck bitters. Helvetica gentrify butcher YOLO Intelligentsia.',
+       date: 2017-10-21T03:56:21.272Z,
+       shortDate: 'October 2017' },
+     { picture:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/atariboy/128.jpg',
+       name: 'Kaya',
+       text:
+        'Food truck salvia. Butcher single-origin coffee stumptown. Crucifix Brooklyn retro kitsch.',
+       date: 2017-01-17T12:03:54.161Z,
+       shortDate: 'January 2017' } ],
+  criteria:
+   { accuracy: 3.75,
+     communication: 3.5,
+     cleanliness: 2.75,
+     location: 3.5,
+     checkin: 2.75,
+     value: 4.25,
+     totalRating: '4.00' } }
+```
 
-      (bunch of code that prepares data to be sent to client)
+### PUT request to '/updateOneReview/:id'
 
-      res.send({reviews, criteria});
-    });
-  });
+```sh
+  { n: 1, nModified: 1, ok: 1 }
+```
 
-My server grabs an array of 100 reviews (objects) from the db, chooses a random amount between 5-100 and populates them with
-the necessary data to display on my client side. So far, it looks like this function takes care of everything I'll need to work with
-on client side.
+### POST request to '/createOne/:id'
+The only relevant data will be inserted as a new data.
+For example:
+req.body is {"accuracy" 7, "name_which_is_not_in_schema" : 2}
+```sh
+  { accuracy: 7, _id: 10000005, __v: 0 }
+```
 
-res.send is called with an object, first value is an array of x review objects and the second value is an object with 6 rating categories
-with the average rating of the x reviews per category.
 
-reviews[0]---
-{ _id: '5c9953c0063ebd55ccb3cb91',
-  picture:
-   'my long pic link',
-  name: 'Mitch',
-  date: '2012-12-28T19:57:29.041Z',
-  text:
-   'Sriracha scenester. +1 tote bag gastropub Echo Park
-tofu. Ennui Vice.',
-  accuracy: 1,
-  communication: 4,
-  cleanliness: 5,
-  location: 5,
-  checkin: 3,
-  value: 1,
-  avgRating: 3.17,
-    __v: 0 }
+### DELETE request to '/deleteOne/:id'
 
- critera---
- { accuracy: '2.95',
-  communication: '3.07',
-  cleanliness: '2.95',
-  location: '3.28',
-  checkin: '3.19',
-  value: '3.05',
-  totalRating: '3.08' }
+```sh
+  { n: 1, ok: 1, deletedCount: 1 }
+```
 
+### GET request to '/readOne/:id'
+```sh
+  { _id: 2,
+  accuracy: 2,
+  communication: 3.4,
+  cleanliness: 3.2,
+  location: 3.8,
+  checkin: 2.6,
+  value: 3,
+  avgRating: '2.40',
+  subReview:
+   [ { picture:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/aka_james/128.jpg',
+       name: 'Ezequiel',
+       text:
+        'Viral irony viral scenester. Keytar. Keytar direct trade  dreamcatcher literally keytar.',
+       date: 2018-01-08T00:55:37.481Z },
+     { picture:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/charliegann/128.jpg',
+       name: 'Rossie',
+       text:
+        'High Life PBR messenger bag four loko ethnic. American Apparel VHS narwhal McSweeney\'s semiotics. Vegan cray bitters ugh.',
+       date: 2019-02-08T05:01:28.510Z },
+     { picture:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/robbschiller/128.jpg',
+       name: 'Moriah',
+       text:
+        'Ethnic. Cray Williamsburg trust fund. Vinyl pop-up bespoke.',
+       date: 2019-04-08T08:11:13.608Z },
+     { picture:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/ripplemdk/128.jpg',
+       name: 'Delfina',
+       text:
+        'Leggings roof party. You probably haven\'t heard of them. Pour-over meh.',
+       date: 2018-10-17T00:38:48.302Z },
+     { picture:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/wtrsld/128.jpg',
+       name: 'Halie',
+       text: 'Kale chips Portland. Retro biodiesel artisan. Trust fund.',
+       date: 2016-02-11T12:45:59.274Z } ] }
+```

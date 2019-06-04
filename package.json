@@ -14,7 +14,8 @@
     "webpack": "webpack -d --watch",
     "start": "node server/index.js",
     "script": "node database/script.js",
-    "seed": "mongoimport --numInsertionWorkers 8 --db mashbnb1  --collection reviews --type csv --headerline --file ./database/out.csv --maintainInsertionOrder"
+    "seedMongo": "node database/seed.js",
+    "seedMySql": "node mysql/script/seed.js"
   },
   "dependencies": {
     "csv-writer": "^1.3.0",
