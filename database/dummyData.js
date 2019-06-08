@@ -1,9 +1,8 @@
-// const Review = require('./db.js').Review;
 const moment = require("moment");
 const loremHipsum = require("lorem-hipsum");
 const dateGen = require("random-date-generator");
 const faker = require("faker");
-
+g
 var genReviewText = () => {
   return loremHipsum({
     count: 3,
@@ -89,14 +88,14 @@ function createReview(amount, id) {
       (tempReview.checkin / revAmount).toFixed(2)
     );
     tempReview.value = parseFloat((tempReview.value / revAmount).toFixed(2));
-    tempReview.avgRating = parseFloat(tempReview.avgRating / revAmount).toFixed(
-      2
-    );
+    tempReview.avgRating = parseFloat((tempReview.avgRating / revAmount).toFixed(2));
+
     id++;
     bulk.push(tempReview);
     //end of loop
   }
   return bulk;
 }
+
 
 module.exports = createReview;
