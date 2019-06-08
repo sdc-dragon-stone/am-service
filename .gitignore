@@ -37,3 +37,5 @@ mysql/csv/sub_reviews.csv
 
 # vsCode debugger Config
 .vscode/
+
+newrelic.js
