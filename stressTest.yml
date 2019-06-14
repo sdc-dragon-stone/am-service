@@ -1,0 +1,32 @@
+config:
+  target: http://localhost:3004
+  http:
+    pool: 10
+  phases:
+    - duration: 60
+      arrivalRate: 1
+  processor: "./stressTestFunction.js"
+
+scenarios:
+  - name: 'Get request'
+    flow:
+      - loop:
+        - get:
+            url: "/readOne/{{$randomNumber(4000000, 9000000)}}/"
+        count: 1000
+  - name: 'Create request'
+    flow:
+      - loop:
+        - function: "generateRandomData"
+        - post:
+            url: "/createOne/"
+            json:
+              accuracy: "{{accuracy}}"
+              communication: "{{communication}}"
+              cleanliness: "{{cleanliness}}"
+              location: "{{location}}"
+              checkin: "{{checkin}}"
+              value: "{{value}}"
+              avgRating: "{{avgRating}}"
+              subReview: "{{subReview}}"
+        count: 1000

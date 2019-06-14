@@ -31,9 +31,9 @@ class App extends React.Component {
     if (id === '/') {
       id = '/12';
     }
-
+    console.log("from client: ", id);
     $.ajax({
-      url: `/totalReviews${id}`,
+      url: `/totalReviews/12`,
       method: 'GET',
       data: { 'id': faker.random.number({min: 1, max: 100}) },
       success: (reviewData) => {

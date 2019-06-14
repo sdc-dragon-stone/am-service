@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3004;
@@ -12,7 +13,6 @@ app.use('/:id', express.static(__dirname + '/../public'));
 
 
 app.get('/totalReviews/:id', (req, res) => {
-  console.log("get Review from server", req.params.id);
   var id = parseInt(req.params.id);
   getReviewById(id)
   .then((result) => {
@@ -24,16 +24,15 @@ app.get('/totalReviews/:id', (req, res) => {
   })
 });
 
-app.post('/createOne/:id', (req, res) => {
-  console.log(req.body);
-  insertOneReview(req.body)
-  .then((result) => {
-    console.log("insert ", result);
-    res.status(200).send(result);;
-  })
-  .catch((err) => {
-    console.log("Post Request ", err);
-    res.send(err);
+app.post('/createOne', (req, res) => {
+  insertOneReview(req.body, (err, result) => {
+    if (err) {
+      console.log("createOne: ", err.code);
+      res.send(err);
+    } else {
+      console.log("successfully created id: ", result._id);
+      res.status(200).send(result);
+    }
   })
 })
 
@@ -51,20 +50,21 @@ app.put('/updateOne/:id', (req, res) => {
 })
 
 app.get('/readOne/:id', (req, res) => {
-  findOneReview(req.body)
+  var id = parseInt(req.params.id);
+  findOneReview({"_id": id})
   .then((result) => {
-    console.log("Read one review ",result);
+    // console.log("Read one review ", result);
     res.status(200).send(result);
   })
   .catch((err) => {
-    console.log("put request", err);
+    console.log("read request", err);
     res.send(err);
   })
 })
 
 app.delete('/deleteOne/:id', (req, res) => {
   var id = parseInt(req.params.id);
-  deleteOneReview({_id: id})
+  deleteOneReview({"_id": id})
   .then((result) => {
     console.log("Delete one review ", result);
     res.status(200).send(result);
