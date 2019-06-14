@@ -1,10 +1,9 @@
-
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 const moment = require('moment');
 require('dotenv').config();
 
 const DBConnection = process.env.DB_CONNECTION_ATLAS || 'mongodb://127.0.0.1/mashbnb1';
-
 
 function retryableConnection() {
   mongoose.connect(DBConnection, {useNewUrlParser: true}).then(() => {
@@ -40,7 +39,9 @@ var reviewSchema = new mongoose.Schema({
   value: Number,
   avgRating: Number,
   subReview: Object
-});
+},{ _id: false });
+
+reviewSchema.plugin(AutoIncrement);
 
 var Review = mongoose.model('Review', reviewSchema);
 
@@ -66,41 +67,24 @@ var getReviewById = async (id) => {
     };
     return {subReviews, criteria};
   })
-  .catch(err => err);
 }
 
 var deleteOneReview = async (obj) => {
   return Review.deleteOne(obj).exec()
-  .then(result => result)
-  .catch(err => err);
 }
 
 var updateOneReview = async (filter, data) => {
   return Review.updateOne(filter, data, {strict: false}).exec()
-  .then(result => result)
-  .catch(err => err);
 }
 
-var insertOneReview = async (data) => {
-  if (!data.hasOwnProperty('_id')) {
-    return Review.findOne().sort('-_id').limit(1).lean().exec()
-    .then((review) => {
-      data._id = review._id + 1;
-      return Review.create(data);
-    })
-    .then(result => result)
-    .catch(err => err);
-  } else {
-    return Review.create(data)
-    .then(result => result)
-    .catch(err => err);
-  }
+var insertOneReview = (data, cb) => {
+  Review.create(data)
+  .then(data => cb (null, data))
+  .catch(err => cb(err, null));
 }
 
 var findOneReview = async (data) => {
-  return Review.findOne(data).lean().exec()
-  .then(result => result)
-  .catch(err => err);
+  return Review.findById(data).lean().exec()
 }
 
 module.exports.findOneReview = findOneReview;

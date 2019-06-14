@@ -2,7 +2,7 @@ const moment = require("moment");
 const loremHipsum = require("lorem-hipsum");
 const dateGen = require("random-date-generator");
 const faker = require("faker");
-g
+
 var genReviewText = () => {
   return loremHipsum({
     count: 3,
@@ -26,7 +26,7 @@ function createReview(amount, id) {
     if (k % temp === 0) {
       console.log(k + temp, "records are generated");
     }
-    var revAmount = faker.random.number({ min: 3, max: 5 });
+
     var reviewArray = [];
     var tempReview = {};
     tempReview._id = id;
@@ -37,7 +37,7 @@ function createReview(amount, id) {
     tempReview.checkin = 0;
     tempReview.value = 0;
     tempReview.avgRating = 0;
-
+    var revAmount = faker.random.number({ min: 3, max: 5 });
     for (var i = 0; i < revAmount; i++) {
       var tempSubReview = {};
       var tempSubReview1 = {};
