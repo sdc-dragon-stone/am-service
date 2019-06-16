@@ -27,13 +27,13 @@ class App extends React.Component {
 
   get() {
     console.log(window.location);
-    var id = window.location.pathname;
+    var id = window.location.pathname.slice(1);
     if (id === '/') {
-      id = '/12';
+      id = '12';
     }
     console.log("from client: ", id);
     $.ajax({
-      url: `/totalReviews/12`,
+      url: `/totalReviews/${id}`,
       method: 'GET',
       data: { 'id': faker.random.number({min: 1, max: 100}) },
       success: (reviewData) => {

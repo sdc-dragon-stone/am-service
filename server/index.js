@@ -8,9 +8,8 @@ const {findOneReview, getReviewById, deleteOneReview,
 
 var moment = require('moment');
 app.use(bodyParser);
-app.use('/', express.static(__dirname + '/../public'));
+app.use('/',express.static(__dirname + '/../public/'));
 app.use('/:id', express.static(__dirname + '/../public'));
-
 
 app.get('/totalReviews/:id', (req, res) => {
   var id = parseInt(req.params.id);
@@ -51,7 +50,7 @@ app.put('/updateOne/:id', (req, res) => {
 
 app.get('/readOne/:id', (req, res) => {
   var id = parseInt(req.params.id);
-  findOneReview({"_id": id})
+  findOneReview({"_id": req.params.id})
   .then((result) => {
     // console.log("Read one review ", result);
     res.status(200).send(result);
