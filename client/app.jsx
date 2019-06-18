@@ -28,7 +28,7 @@ class App extends React.Component {
   get() {
     console.log(window.location);
     var id = window.location.pathname.slice(1);
-    if (id === '/') {
+    if (id === '/' || id === '') {
       id = '12';
     }
     console.log("from client: ", id);
