@@ -29,7 +29,7 @@ function createReview(amount, id) {
 
     var reviewArray = [];
     var tempReview = {};
-    // tempReview._id = id;
+    tempReview._id = id;
     tempReview.accuracy = 0;
     tempReview.communication = 0;
     tempReview.cleanliness = 0;
