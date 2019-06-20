@@ -12,7 +12,7 @@ MongoClient.connect(url, async function(err, client) {
   assert.equal(null, err);
   console.log("Connected correctly to server");
   const db = client.db(dbName);
-  await b.createCollection("counters");
+  await db.createCollection("counters");
   await db.counters.insert({"id":"_id", reference_value: null, seq: 10000000});
   runScript(db, 10000000, 1, 250000, false);
 });
